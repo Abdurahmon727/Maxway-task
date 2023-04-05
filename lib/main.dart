@@ -14,6 +14,7 @@ class MaxWay extends StatelessWidget {
     return MaterialApp(
       title: 'MaxWay',
       theme: ThemeData(
+        fontFamily: 'Inter',
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),

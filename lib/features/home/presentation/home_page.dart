@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:maxway_task/assets/colors/colors.dart';
-import 'package:maxway_task/core/widgets/w_scale.dart';
-import 'package:maxway_task/features/home/presentation/widgets/category.dart';
+
+import '../../../assets/colors/colors.dart';
+import '../../../assets/constants/constants.dart';
 import '../../../assets/icons/icons.dart';
 import '../../../assets/images/images.dart';
+import '../../../core/widgets/w_scale.dart';
+import 'widgets/category.dart';
+import 'widgets/meal.dart';
+import 'widgets/title.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -21,7 +25,7 @@ class HomePage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SvgPicture.asset(AppImages.maxWay),
+              Image.asset(AppImages.maxWay),
               const Text(
                 'Menyu',
                 style: TextStyle(
@@ -46,7 +50,7 @@ class HomePage extends StatelessWidget {
               ),
               WScaleAnimation(
                 onTap: () {
-                  //TODO:
+                  //TODO: navigate to basket page
                 },
                 child: SizedBox(
                   height: 26,
@@ -80,7 +84,7 @@ class HomePage extends StatelessWidget {
               ),
               WScaleAnimation(
                   onTap: () {
-                    //TODO:
+                    //TODO: open drawer
                   },
                   child: SvgPicture.asset(AppIcons.drawer)),
             ],
@@ -100,6 +104,7 @@ class HomePage extends StatelessWidget {
                   'Siz izlagan mazzali ta’mlar',
                   textAlign: TextAlign.center,
                   style: TextStyle(
+                    fontFamily: 'OpenSans',
                     fontSize: 45,
                     fontWeight: FontWeight.w700,
                   ),
@@ -108,24 +113,10 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 80),
             Row(
-              children: const [
-                WCategory(
-                  backgroundColor: yellow,
-                  backgroungImage: AppImages.pizzaBackground,
-                  bigTitle: 'Pit\n -sa',
-                  bigTitleColor: orange,
-                  title: 'data',
-                  titlImage: AppImages.fire,
-                ),
-                SizedBox(width: 10),
-                WCategory(
-                  backgroundColor: purple,
-                  backgroungImage: AppImages.sandwichBackground,
-                  bigTitle: '  kom\n-bo',
-                  bigTitleColor: rose,
-                  title: 'data',
-                  titlImage: AppImages.rocket,
-                )
+              children: [
+                WCategory(entity: categories[0]),
+                const SizedBox(width: 10),
+                WCategory(entity: categories[1])
               ],
             ),
             const SizedBox(height: 35),
@@ -134,7 +125,7 @@ class HomePage extends StatelessWidget {
               children: [
                 WScaleAnimation(
                   onTap: () {
-                    //TODO
+                    //TODO: open settings
                   },
                   child: Container(
                     height: 50,
@@ -148,36 +139,14 @@ class HomePage extends StatelessWidget {
                     child: SvgPicture.asset(AppIcons.settings),
                   ),
                 ),
-                Text('Pitsa'),
-                Text('Burger'),
-                Text('Kombo'),
-                Text('Barchasi'),
+                const Text('Pitsa'),
+                const Text('Burger'),
+                const Text('Kombo'),
+                const Text('Barchasi'),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(top: 50, bottom: 20),
-              child: Text(
-                'Pitsa',
-                style: TextStyle(
-                  fontSize: 36,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ),
-            Container(
-              height: 170,
-              padding: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                borderRadius: const BorderRadius.all(Radius.circular(12)),
-                border:
-                    Border.all(color: const Color(0xFF979797).withOpacity(0.2)),
-              ),
-              child: Row(
-                children: [
-                  Image.asset(AppImages.gavaya),
-                ],
-              ),
-            )
+            const WTitle(title: 'Pitsa'),
+            WMeal(),
           ]),
     );
   }

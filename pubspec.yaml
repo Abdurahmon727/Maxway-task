@@ -14,6 +14,7 @@ dependencies:
 
   cupertino_icons: ^1.0.2
   flutter_svg: ^1.1.6
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -30,3 +31,15 @@ flutter:
     - assets/
     - assets/images/
     - assets/icons/
+
+  fonts:
+    - family: Opensans
+      fonts:
+        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/OpenSans-Medium.ttf
+
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+        - asset: assets/fonts/Inter-Medium.ttf
+        - asset: assets/fonts/Inter-Bold.ttf

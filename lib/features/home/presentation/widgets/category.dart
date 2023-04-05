@@ -1,31 +1,21 @@
 import 'package:flutter/material.dart';
 
 import '../../../../assets/colors/colors.dart';
-import '../../../../assets/images/images.dart';
+import '../../domain/entities/category.dart';
 
 class WCategory extends StatelessWidget {
   const WCategory({
     Key? key,
-    required this.titlImage,
-    required this.title,
-    required this.bigTitle,
-    required this.backgroungImage,
-    required this.backgroundColor,
-    required this.bigTitleColor,
+    required this.entity,
   }) : super(key: key);
 
-  final String titlImage;
-  final String title;
-  final Color backgroundColor;
-  final Color bigTitleColor;
-  final String bigTitle;
-  final String backgroungImage;
+  final CategoryEntity entity;
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(19)),
+        borderRadius: const BorderRadius.all(Radius.circular(19)),
         child: Stack(
             alignment: Alignment.bottomRight,
             clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -34,7 +24,7 @@ class WCategory extends StatelessWidget {
                 height: 132,
                 width: double.maxFinite,
                 padding: const EdgeInsets.all(10),
-                color: backgroundColor,
+                color: entity.backgroundColor,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -50,11 +40,11 @@ class WCategory extends StatelessWidget {
                       child: IntrinsicWidth(
                         child: Row(
                           children: [
-                            Image.asset(titlImage),
+                            Image.asset(entity.titleImage),
                             const SizedBox(width: 6),
                             Expanded(
                               child: Text(
-                                title,
+                                entity.title,
                                 overflow: TextOverflow.ellipsis,
                               ),
                             )
@@ -63,17 +53,17 @@ class WCategory extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      bigTitle.toUpperCase(),
+                      entity.bigTitle.toUpperCase(),
                       style: TextStyle(
                         fontSize: 26,
                         fontWeight: FontWeight.w700,
-                        color: bigTitleColor,
+                        color: entity.bigTitleColor,
                       ),
                     ),
                   ],
                 ),
               ),
-              Image.asset(backgroungImage),
+              Image.asset(entity.backgroungImage),
             ]),
       ),
     );
