@@ -8,3 +8,4 @@ const yellow = Color(0xFFF1B301);
 const orange = Color(0xFFE76A06);
 const rose = Color(0xFFFC96F7);
 const lightGrey = Color(0xFFF5F5F5);
+const mediumGrey = Color(0xFF979797);

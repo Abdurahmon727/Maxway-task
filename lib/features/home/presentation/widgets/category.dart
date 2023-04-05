@@ -45,6 +45,11 @@ class WCategory extends StatelessWidget {
                             Expanded(
                               child: Text(
                                 entity.title,
+                                style: const TextStyle(
+                                  color: white,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w500,
+                                ),
                                 overflow: TextOverflow.ellipsis,
                               ),
                             )

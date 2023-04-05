@@ -69,7 +69,8 @@ class WMeal extends StatelessWidget {
                           ),
                         ),
                         const SizedBox(width: 8),
-                        Image.asset(entity.nameImage)
+                        if (entity.nameImage != null)
+                          Image.asset(entity.nameImage!)
                       ],
                     ),
                     const SizedBox(height: 10),
