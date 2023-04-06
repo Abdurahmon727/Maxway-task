@@ -29,7 +29,7 @@ class MaxWay extends StatelessWidget {
           ),
           home: BlocProvider(
             create: (context) => serviceLocator<BasketBloc>(),
-            child: const HomePage(),
+            child: HomePage(),
           ),
         ),
       ),

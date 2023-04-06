@@ -15,7 +15,9 @@ import 'widgets/category.dart';
 import 'widgets/list_of_meals.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final ScrollController mealController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +109,7 @@ class HomePage extends StatelessWidget {
           ),
         ),
       ),
-      body: ListView(children: [
+      body: ListView(controller: mealController, children: [
         Stack(
           alignment: Alignment.bottomCenter,
           children: [
@@ -158,10 +160,49 @@ class HomePage extends StatelessWidget {
                   child: SvgPicture.asset(AppIcons.settings),
                 ),
               ),
-              const Text('Pitsa'),
-              const Text('Burger'),
-              const Text('Kombo'),
-              const Text('Barchasi'),
+              TextButton(
+                  onPressed: () {
+                    mealController.animateTo(700,
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.decelerate);
+                  },
+                  child: const Text(
+                    'Pitsa',
+                    style: TextStyle(color: black),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    mealController.animateTo(1450,
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.decelerate);
+                  },
+                  child: const Text(
+                    'Burger',
+                    style: TextStyle(color: black),
+                  )),
+              TextButton(
+                  onPressed: () {
+                    mealController.animateTo(2150,
+                        duration: const Duration(seconds: 1),
+                        curve: Curves.decelerate);
+                  },
+                  child: const Text(
+                    'Kombo',
+                    style: TextStyle(color: black),
+                  )),
+              WScaleAnimation(
+                onTap: () {
+                  mealController.animateTo(700,
+                      duration: const Duration(seconds: 1), curve: Curves.ease);
+                },
+                child: Container(
+                    padding: const EdgeInsets.all(5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(15),
+                      color: yellow,
+                    ),
+                    child: const Text('Barchasi')),
+              ),
             ],
           ),
         ),
@@ -234,7 +275,7 @@ class HomePage extends StatelessWidget {
             Positioned(top: 170, child: Image.asset(AppImages.yellowNike)),
             Positioned(top: 5, right: 5, child: Image.asset(AppImages.phone)),
           ],
-        )
+        ),
       ]),
     );
   }

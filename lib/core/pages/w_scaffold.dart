@@ -35,7 +35,9 @@ class _WScaffoldState extends State<WScaffold> {
         if (state.showPopUp && state.popUpType == PopUpType.error) {
           showSimpleNotification(
             WPopUp(
-                color: Colors.red, icon: AppIcons.plus, text: state.errorText),
+                color: Colors.red,
+                icon: AppIcons.warning,
+                text: state.errorText),
             elevation: 0,
             background: Colors.transparent,
             autoDismiss: true,
@@ -45,7 +47,7 @@ class _WScaffoldState extends State<WScaffold> {
           showSimpleNotification(
             WPopUp(
               color: Colors.orangeAccent,
-              icon: AppIcons.plus,
+              icon: AppIcons.warning,
               text: state.warningText,
             ),
             elevation: 0,
@@ -57,7 +59,7 @@ class _WScaffoldState extends State<WScaffold> {
           showSimpleNotification(
             WPopUp(
               color: Colors.green,
-              icon: AppIcons.plus,
+              icon: AppIcons.warning,
               text: state.successText,
             ),
             elevation: 0,

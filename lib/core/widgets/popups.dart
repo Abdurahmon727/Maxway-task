@@ -40,7 +40,10 @@ class WPopUp extends StatelessWidget {
               onTap: () {
                 context.read<ShowPopUpBloc>().add(ShowPopUpEvent.hide());
               },
-              child: SvgPicture.asset(icon),
+              child: SvgPicture.asset(
+                icon,
+                height: 20,
+              ),
             ),
             const SizedBox(width: 12),
             Expanded(

@@ -76,8 +76,9 @@ class WCheckOutMeal extends StatelessWidget {
                   height: 30,
                   width: 30,
                   decoration: const BoxDecoration(
-                      color: yellow,
-                      borderRadius: BorderRadius.all(Radius.circular(10))),
+                    color: yellow,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
                   child: const Icon(
                     Icons.close,
                     size: 18,
