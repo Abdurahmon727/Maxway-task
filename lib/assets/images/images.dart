@@ -22,4 +22,12 @@ abstract class AppImages {
   static const String phone = 'assets/images/phone.png';
   static const String googlePlay = 'assets/images/googleplay.png';
   static const String appStore = 'assets/images/appstore.png';
+
+  static const String facebook = 'assets/images/facebook.png';
+  static const String instagram = 'assets/images/instagram.png';
+  static const String telegram = 'assets/images/telegram.png';
+
+  static const String tiktok = 'assets/images/tiktok.png';
+  static const String youtube = 'assets/images/youtube.png';
+  static const String maxWay2020 = 'assets/images/maxway2020.png';
 }
