@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:maxway_task/features/home/presentation/widgets/info.dart';
-import 'package:maxway_task/features/home/presentation/widgets/share_app.dart';
 
 import '../../../assets/colors/colors.dart';
 import '../../../assets/constants/constants.dart';
@@ -13,8 +11,9 @@ import '../../../core/widgets/w_scale.dart';
 import '../../basket/presentation/basket_page.dart';
 import '../../basket/presentation/bloc/basket_bloc.dart';
 import 'widgets/category.dart';
-import 'widgets/get_app.dart';
+import 'widgets/info.dart';
 import 'widgets/list_of_meals.dart';
+import 'widgets/share_app.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -45,14 +44,14 @@ class HomePage extends StatelessWidget {
               const Text('Bolalar uchun',
                   style: TextStyle(
                     fontSize: 12,
-                    color: grey,
+                    color: mediumGrey,
                     fontWeight: FontWeight.w400,
                   )),
               const Text(
                 'Filiallar',
                 style: TextStyle(
                   fontSize: 12,
-                  color: grey,
+                  color: mediumGrey,
                   fontWeight: FontWeight.w400,
                 ),
               ),
