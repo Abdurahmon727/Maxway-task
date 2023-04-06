@@ -1,3 +1,5 @@
+import '../features/home/domain/entities/meal.dart';
+
 abstract class AppFunctions {
   static String showPrice(int value) {
     String stringValue = value.toString();
@@ -19,5 +21,13 @@ abstract class AppFunctions {
 
     final result = parts.reversed.join(",");
     return '$result UZS';
+  }
+
+  static String calculateSumma(List<MealEntity> entities, List<int> numbers) {
+    int summa = 0;
+    for (int i = 0; i < numbers.length; i++) {
+      summa += entities[i].price * numbers[i];
+    }
+    return showPrice(summa);
   }
 }

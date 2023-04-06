@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:maxway_task/features/basket/presentation/basket_page.dart';
 import 'package:maxway_task/features/home/presentation/widgets/get_app.dart';
 
 import '../../../assets/colors/colors.dart';
 import '../../../assets/constants/constants.dart';
 import '../../../assets/icons/icons.dart';
 import '../../../assets/images/images.dart';
+import '../../../core/pages/w_scaffold.dart';
 import '../../../core/widgets/w_scale.dart';
+import '../../basket/presentation/bloc/basket_bloc.dart';
 import 'widgets/category.dart';
 import 'widgets/list_of_meals.dart';
 
@@ -15,7 +19,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return WScaffold(
       appBar: AppBar(
         backgroundColor: white,
         titleSpacing: 0,
@@ -50,35 +54,47 @@ class HomePage extends StatelessWidget {
               ),
               WScaleAnimation(
                 onTap: () {
-                  //TODO: navigate to basket page
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const BasketPage(),
+                      ));
                 },
                 child: SizedBox(
                   height: 26,
                   width: 27,
-                  child: Stack(
-                    alignment: Alignment.bottomLeft,
-                    children: [
-                      SvgPicture.asset(AppIcons.basket),
-                      Positioned(
-                          top: 0,
-                          right: 0,
-                          child: Container(
-                            alignment: Alignment.center,
-                            height: 16,
-                            width: 16,
-                            decoration: BoxDecoration(
-                              color: yellow,
-                              shape: BoxShape.circle,
-                              border: Border.all(width: 3, color: purple),
-                            ),
-                            child: const Text(
-                              '3',
-                              style: TextStyle(
-                                fontSize: 10,
-                              ),
-                            ),
-                          ))
-                    ],
+                  child: BlocBuilder<BasketBloc, BasketState>(
+                    builder: (context, state) {
+                      return Stack(alignment: Alignment.bottomLeft, children: [
+                        SvgPicture.asset(AppIcons.basket),
+                        Visibility(
+                          visible: state.meals.isNotEmpty,
+                          child: Positioned(
+                              top: 0,
+                              right: 0,
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 16,
+                                padding: const EdgeInsets.only(
+                                    bottom: 1, left: 2, right: 2),
+                                decoration: BoxDecoration(
+                                  color: yellow,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(15)),
+                                  border: Border.all(width: 3, color: purple),
+                                ),
+                                child: Text(
+                                  state.meals.length.toString(),
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 8,
+                                  ),
+                                ),
+                              )),
+                        )
+                      ]);
+                    },
                   ),
                 ),
               ),

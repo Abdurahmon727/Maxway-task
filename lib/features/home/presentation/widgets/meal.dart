@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:maxway_task/features/home/domain/entities/meal.dart';
 
@@ -6,7 +7,9 @@ import '../../../../assets/colors/colors.dart';
 import '../../../../assets/icons/icons.dart';
 import '../../../../assets/images/images.dart';
 import '../../../../core/app_functions.dart';
+import '../../../../core/bloc/show_pop_up/show_pop_up_bloc.dart';
 import '../../../../core/widgets/w_scale.dart';
+import '../../../basket/presentation/bloc/basket_bloc.dart';
 
 class WMeal extends StatelessWidget {
   const WMeal({
@@ -101,9 +104,15 @@ class WMeal extends StatelessWidget {
           right: 16,
           bottom: 16,
           child: WScaleAnimation(
-            onTap: () {
-              //TODO: add to basket
-            },
+            onTap: () => context.read<BasketBloc>().add(BasketEvent.addMeal(
+                  entity: entity,
+                  onFail: (value) {
+                    context
+                        .read<ShowPopUpBloc>()
+                        .add(ShowPopUpEvent.showWarning(text: value));
+                    //TODO
+                  },
+                )),
             child: Container(
               height: 40,
               width: 40,
